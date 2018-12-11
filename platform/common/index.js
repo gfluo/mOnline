@@ -16,7 +16,7 @@ class Main {
      * @param {url, postData} params 
      */
     static post(params) {
-        console.log(params);
+        ///console.log(params);
         return new Promise((resolve, reject) => {
             request({
                 url: params.url,
