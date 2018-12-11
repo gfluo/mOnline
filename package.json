@@ -1,0 +1,22 @@
+{
+  "name": "monline",
+  "version": "1.0.0",
+  "description": "微信小店商品批量上传",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfluo/mOnline.git"
+  },
+  "author": "zoroshow@outlook.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gfluo/mOnline/issues"
+  },
+  "homepage": "https://github.com/gfluo/mOnline#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
