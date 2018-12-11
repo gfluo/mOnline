@@ -54,6 +54,7 @@ class Main {
                     cate_id: cid
                 }
             });
+            console.log(reqStr);
             let subInfo = JSON.parse(reqStr);
             if (`ok` == subInfo.errmsg && subInfo.cate_list.length) {
                 return subInfo.cate_list[0];
