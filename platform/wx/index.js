@@ -48,14 +48,12 @@ class Main {
         try {
             let token = await Main.getToken();
             let requestUrl = url.categorySub + `?access_token=${token}`;
-            let reqStr = await common.post({
+            let subInfo = await common.post({
                 url: requestUrl,
                 postData: {
                     cate_id: cid
                 }
             });
-            console.log(reqStr);
-            let subInfo = JSON.parse(reqStr);
             if (`ok` == subInfo.errmsg && subInfo.cate_list.length) {
                 return subInfo.cate_list[0];
             }
