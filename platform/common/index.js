@@ -28,7 +28,6 @@ class Main {
                 body: params.postData
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    console.log(body);
                     resolve(body);
                 }
                 reject(error ? error : response.statusCode);

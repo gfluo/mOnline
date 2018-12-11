@@ -13,6 +13,17 @@ process.on(`uncatchException`, (e) => {
     process.exit(1);
 })
 
+if (process.argv.length > 2) {
+    if (process.argv[2] == 1) {     ///获取顶级分类
+        (async() => {
+            let topCidInfo = await platformW.getCategorySub(1);
+            console.log(topCidInfo);
+        })()
+    }
+} else {
+    start();
+}
+
 async function start() {
     try {
         let jsonStr = await utilSelf.readJson(path.join(__dirname, `./onlined.json`));
@@ -30,6 +41,4 @@ async function start() {
         console.error(e);
     }
 }
-
-start();
 
