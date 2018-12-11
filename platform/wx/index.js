@@ -89,6 +89,7 @@ class Main {
             let token = await Main.getToken();
             let requestUrl = 
                 url.skuTable + `?access_token=${token}`;
+            console.log(requestUrl);
             let skuTableInfo = await common.post({
                 url: requestUrl,
                 postData: {
