@@ -78,10 +78,26 @@ class Main {
                 filename: params.filename
             });
             let uploadSuccess = JSON.parse(result);
-            console.log(uploadSuccess);
             return uploadSuccess.url;
         } catch (e) {
             throw e;
+        }
+    }
+
+    static async skuTable(cid) {
+        try {
+            let token = await Main.getToken();
+            let requestUrl = 
+                url.skuTable + `?access_token=${token}`;
+            let skuTableInfo = await common.post({
+                url: requestUrl,
+                postData: {
+                    cate_id: cid,
+                }
+            })
+            console.log(skuTableInfo);
+        } catch (e) {
+            throw e
         }
     }
 }

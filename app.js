@@ -22,6 +22,14 @@ if (process.argv.length > 2) {
                 console.error(e);
             }
         })()
+    } else if (process.argv[2] == 1) {
+        (async() => {
+            try {
+            let skuInfo = await platformW.skuTable(`538116792`);
+            } catch (e) {
+                console.error(e);
+            }
+        })()
     }
 } else {
     start();
