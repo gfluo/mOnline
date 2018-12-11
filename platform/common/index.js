@@ -1,4 +1,5 @@
 const request = require(`request`);
+const fs = require(`fs`);
 
 class Main {
     static get(url) {
@@ -33,6 +34,24 @@ class Main {
                 reject(error ? error : response.statusCode);
             });
         });
+    }
+
+    static fileDownload(params) {
+        return new Promise((resolve, reject) => {
+            let downloadStream = request(params.url).pipe(fs.createWriteStream(params.filedir));
+            downloadStream.on('end', ()=>{
+                console.log(`${params.url} 下载完成`);
+                resolve();
+            })
+            downloadStream.on('error', function(err) {
+                reject(err);        
+            })
+            downloadStream.on("finish", function() {
+                console.log(`${params.filedir} 写入完成`);
+                downloadStream.end();
+                resolve();
+            });
+        })
     }
 }
 

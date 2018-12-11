@@ -1,3 +1,4 @@
+const path = require(`path`);
 const common = require('../common/index');
 const { url } = require(`./remote`);
 class Main {
@@ -54,7 +55,21 @@ class Main {
                 }
             }
         } catch (e) {
-            throw(e);
+            throw (e);
+        }
+    }
+
+    /**
+     * 
+     * @param {filename, imgUrl} params 
+     */
+    static async imgDownload(params) {
+        try {
+            let filedir = path.join(__dirname, `./files/${params.filename}`);
+            await common.fileDownload({ url: `${url.imgHead}/${params.url}`, filedir });
+            return filedir;
+        } catch (e) {
+            throw e;
         }
     }
 }

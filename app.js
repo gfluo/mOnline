@@ -16,8 +16,11 @@ process.on(`uncatchException`, (e) => {
 if (process.argv.length > 2) {
     if (process.argv[2] == 1) {     ///获取顶级分类
         (async() => {
+            try {
             let topCidInfo = await platformW.getCategorySub(1);
-            console.log(topCidInfo);
+            } catch (e) {
+                console.error(e);
+            }
         })()
     }
 } else {
@@ -30,12 +33,15 @@ async function start() {
         let onlinedInfo = JSON.parse(jsonStr);
         let ms = await platformS.mList({limit: conf.sourceLimit, skip: onlinedInfo.skip});
         for (let i = 0; i < ms.length; ++i) {
+            let localFiledir = await platformS.imgDownload({
+                url: ms[i].goods_img,
+                filename: `${ms[i].goods_id}_goods_img.jpg`,
+            }); 
             let cidInfo = await platformS.allCInfo(ms[i].cat_id);
             let relateStr = await utilSelf.readJson(path.join(__dirname, './platform/relate/relate.json'));
             let relate = JSON.parse(relateStr);
             let wxCidInfo = relate[cidInfo.top.cid];
             let wxSubInfo = await platformW.getCategorySub(wxCidInfo.wx_cid);
-            console.log(wxSubInfo);
         }
     } catch (e) {
         console.error(e);
