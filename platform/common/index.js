@@ -24,7 +24,7 @@ class Main {
                 headers: {
                     "content-type": "application/json",
                 },
-                body: postData
+                body: params.postData
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     resolve(body);
