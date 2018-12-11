@@ -18,6 +18,7 @@ if (process.argv.length > 2) {
         (async() => {
             try {
             let topCidInfo = await platformW.getCategorySub(1);
+            console.log(topCidInfo);
             } catch (e) {
                 console.error(e);
             }
