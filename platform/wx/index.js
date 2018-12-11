@@ -62,6 +62,28 @@ class Main {
             throw e;
         }
     }
+
+    /**
+     * 
+     * @param {filename, filedir} params 
+     */
+    static async imgUpload(params) {
+        try {
+            let token = await Main.getToken();
+            let requestUrl =
+                url.uploadImg + `?access_token=${token}`;
+            let result = await common.fileUpload({
+                url: requestUrl,
+                filedir: params.filedir,
+                filename: params.filename
+            });
+            let uploadSuccess = JSON.parse(result);
+            console.log(uploadSuccess);
+            return uploadSuccess.url;
+        } catch (e) {
+            throw e;
+        }
+    }
 }
 
 module.exports = Main;

@@ -53,6 +53,39 @@ class Main {
             });
         })
     }
+
+    /**
+     * 
+     * @param {url, filename, filedir} params 
+     */
+    static fileUpload(params) {
+        return new Promise((resolve, reject) => {
+            try {
+                request.post({
+                    url: params.url + `&type=image`,
+                    formData: {
+                        buffer: {
+                            value: fs.readFileSync(params.filedir),
+                            options: {
+                                filename: params.filename,
+                                contentType: 'image/jpg'
+                            }
+                        },
+                    },
+                }, function optionalCallback(err, httpResponse, body) {
+                    if (err) {
+                        reject(err)
+                    }
+                    if (httpResponse.statusCode == 200) {
+                        resolve(body);
+                    }
+                    reject(httpResponse.statusCode);
+                });
+            } catch (e) {
+                reject(e);
+            }
+        })
+    }
 }
 
 module.exports = Main

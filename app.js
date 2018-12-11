@@ -37,6 +37,11 @@ async function start() {
                 url: ms[i].goods_img,
                 filename: `${ms[i].goods_id}_goods_img.jpg`,
             }); 
+            let main_img = await platformW.imgUpload({
+                filename: `${ms[i].goods_id}_goods_img.jpg`,
+                filedir: localFiledir
+            });
+
             let cidInfo = await platformS.allCInfo(ms[i].cat_id);
             let relateStr = await utilSelf.readJson(path.join(__dirname, './platform/relate/relate.json'));
             let relate = JSON.parse(relateStr);
