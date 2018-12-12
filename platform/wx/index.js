@@ -55,6 +55,7 @@ class Main {
                 }
             });
             if (`ok` == subInfo.errmsg && subInfo.cate_list.length) {
+                console.log(subInfo.cate_list)
                 return subInfo.cate_list[0];
             }
             throw new Error(`获取次级分类信息失败`);
