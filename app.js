@@ -79,7 +79,7 @@ async function start() {
             let wxSubInfo = await platformW.getCategorySub(wxCidInfo.wx_cid);
             ///console.log(wxSubInfo);
             wxMOpData.product_base.category_id = [];
-            wxMOpData.product_base.category_id.push(wxSubInfo.cid);
+            wxMOpData.product_base.category_id.push(wxSubInfo.id);
             wxMOpData.product_base.name = ms[i].goods_name;
             wxMOpData.product_base.main_img = main_img;
             wxMOpData.product_base.img = [];
