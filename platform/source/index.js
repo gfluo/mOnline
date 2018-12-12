@@ -40,9 +40,6 @@ class Main {
             let secondCidInfo = await Main.upCid(bottomCid);
             let topCidInfo = await Main.upCid(secondCidInfo.parent_id);
             let sharpCidInfo = await Main.upCid(topCidInfo.parent_id);
-            console.log(secondCidInfo);
-            console.log(topCidInfo);
-            console.log(sharpCidInfo);
             return {
                 bottom: {
                     cid: bottomCid,

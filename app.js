@@ -77,9 +77,9 @@ async function start() {
             let relate = JSON.parse(relateStr);
             let wxCidInfo = relate[cidInfo.top.cid];
             let wxSubInfo = await platformW.getCategorySub(wxCidInfo.wx_cid);
-            console.log(wxSubInfo);
+            ///console.log(wxSubInfo);
             wxMOpData.product_base.category_id = [];
-            wxMOpData.product_base.push(wxSubInfo.top.cid);
+            wxMOpData.product_base.push(wxSubInfo.cid);
             wxMOpData.product_base.name = ms[i].goods_name;
             wxMOpData.product_base.main_img = main_img;
             wxMOpData.product_base.img = [];
@@ -93,13 +93,13 @@ async function start() {
                 "text": ms[i].keywords
             })
             wxMOpData.product_base.detail.push({
-                "text": `最低分类信息：${wxSubInfo.bottom.cid} -- ${wxSubInfo.bottom.name}`
+                "text": `最低分类信息：${cidInfo.bottom.cid} -- ${cidInfo.bottom.name}`
             })
             wxMOpData.product_base.detail.push({
-                "text": `次级分类信息：${wxSubInfo.second.cid} -- ${wxSubInfo.second.name}`
+                "text": `次级分类信息：${cidInfo.second.cid} -- ${cidInfo.second.name}`
             })
             wxMOpData.product_base.detail.push({
-                "text": `顶级分类信息：${wxSubInfo.top.cid} -- ${wxSubInfo.top.cid}`
+                "text": `顶级分类信息：${cidInfo.top.cid} -- ${cidInfo.top.cid}`
             })
             wxMOpData.sku_list = [];
             wxMOpData.sku_list.push({
