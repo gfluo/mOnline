@@ -34,7 +34,7 @@ if (process.argv.length > 2) {
     } else if (process.argv[2] == 3) {
         (async() => {
             try {
-                let dRes = await platformW.mDel(argv[3]);
+                let dRes = await platformW.mDel(process.argv[3]);
                 console.log(dRes);
             } catch (e) {
                 console.error(e);
@@ -43,7 +43,7 @@ if (process.argv.length > 2) {
     } else if (process.argv[2] == 4) {
         (async() => {
             try {
-                let mList = await platformW.mList(argv[3]);
+                let mList = await platformW.mList(process.argv[3]);
                 console.log(mList);
             } catch (e) {
                 console.error(e);
