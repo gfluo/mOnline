@@ -17,7 +17,7 @@ if (process.argv.length > 2) {
     if (process.argv[2] == 1) {     ///获取顶级分类
         (async() => {
             try {
-            let topCidInfo = await platformW.getCategorySub(1);
+            let topCidInfo = await platformW.getCategorySub('538070935');
             console.log(topCidInfo);
             } catch (e) {
                 console.error(e);
