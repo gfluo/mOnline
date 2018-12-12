@@ -119,8 +119,10 @@ class Main {
 
     static async mDel(dId) {
         try {
+            console.log(dId);
             let token = await Main.getToken();
             let requestUrl = url.mDel + `?access_token=${token}`;
+            console.log(requestUrl);
             let dRes = await common.post({
                 url, requestUrl,
                 postData: {
