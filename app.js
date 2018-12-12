@@ -44,7 +44,7 @@ if (process.argv.length > 2) {
         (async() => {
             try {
                 let mList = await platformW.mList(process.argv[3]);
-                console.log(mList);
+                console.log(mList.products_info);
             } catch (e) {
                 console.error(e);
             }
