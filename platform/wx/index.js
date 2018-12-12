@@ -120,7 +120,7 @@ class Main {
     static async mDel(dId) {
         try {
             let token = await Main.getToken();
-            let requestUrl = url.mDel + `access_token=${token}`;
+            let requestUrl = url.mDel + `?access_token=${token}`;
             let dRes = await common.post({
                 url, requestUrl,
                 postData: {
@@ -136,7 +136,7 @@ class Main {
     static async mList(status) {
         try {
             let token = await Main.getToken();
-            let requestUrl = url.merchandise + `access_token=${token}`;
+            let requestUrl = url.merchandise + `?access_token=${token}`;
             let ms = await common.post({
                 url: requestUrl,
                 postData: {
