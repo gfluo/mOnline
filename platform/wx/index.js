@@ -100,6 +100,22 @@ class Main {
             throw e
         }
     }
+
+
+    static async mOnline(postData) {
+        try {
+            let token = await Main.getToken();
+            let requestUrl =
+                url.merchandiseAdd + `?access_token=${token}`;
+            let oRes = await common.post({
+                url: requestUrl,
+                postData
+            });
+            return oRes;
+        } catch (e) {
+            throw e
+        }
+    }
 }
 
 module.exports = Main;

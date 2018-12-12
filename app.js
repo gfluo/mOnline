@@ -129,7 +129,9 @@ async function start() {
                     }
                 ]
             }
-            console.log(JSON.stringify(wxMOpData));
+            ///console.log(JSON.stringify(wxMOpData));
+            let mOlineResult = await platformW.mOnline(wxMOpData);
+            console.log(mOlineResult);
         }
     } catch (e) {
         console.error(e);
