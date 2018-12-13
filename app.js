@@ -118,7 +118,7 @@ async function start() {
                 "text": `次级分类信息：${cidInfo.second.cid} -- ${cidInfo.second.name}`
             })
             wxMOpData.product_base.detail.push({
-                "text": `顶级分类信息：${cidInfo.top.cid} -- ${cidInfo.top.cid}`
+                "text": `顶级分类信息：${cidInfo.top.cid} -- ${cidInfo.top.name}`
             })
             wxMOpData.sku_list = [];
             wxMOpData.sku_list.push({
