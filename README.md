@@ -2,8 +2,9 @@
 微信小店商品批量上传
 # onlined.json
 已经上传过的商品信息
-# private/wxSecret.json
-此文件涉及私密信息，需自建并填上私钥公钥信息
+# conf.js
+控制每次从源获取的商品数量
 # how to start 
-    启动参数设置 1.直接node app.js 启动商品上传
-                2.node app.js 1 获取微信顶级商品分类
+    启动参数设置 1.node app.js 启动商品上传
+                2.node app.js 4 number  获取微信小店已上传的商品 number是商品的状态 0，1，2
+                3.node app.js 3 product_id  从微信小店删除已经上传的商品 product_id是更具命令2获取的商品id
