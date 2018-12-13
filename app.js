@@ -1,4 +1,5 @@
 const path = require(`path`);
+const fs = require(`fs`);
 const utilSelf = require(`./util`);
 const conf = require(`./conf`);
 const platformS = require(`./platform/source/index`);
@@ -56,9 +57,12 @@ if (process.argv.length > 2) {
 }
 
 async function start() {
+    let jsonStr = ''; 
+    let onlinedInfo = {}; 
+    let needSkip = 0;
     try {
-        let jsonStr = await utilSelf.readJson(path.join(__dirname, `./onlined.json`));
-        let onlinedInfo = JSON.parse(jsonStr);
+        jsonStr = await utilSelf.readJson(path.join(__dirname, `./onlined.json`));
+        onlinedInfo = JSON.parse(jsonStr);
         let ms = await platformS.mList({limit: conf.sourceLimit, skip: onlinedInfo.skip});
         for (let i = 0; i < ms.length; ++i) {
             let wxMOpData = {
@@ -149,10 +153,18 @@ async function start() {
             }
             ///console.log(JSON.stringify(wxMOpData));
             let mOlineResult = await platformW.mOnline(wxMOpData);
+            if (`ok` == mOlineResult.errmsg) {
+                needSkip += 1;
+                onlinedInfo.lastedOnline = ms[i].goods_id;
+            }
             console.log(mOlineResult);
         }
+        onlinedInfo.skip += needSkip;
+        fs.writeFileSync(path.join(__dirname, './onlined.json'), JSON.stringify(onlinedInfo));
     } catch (e) {
         console.error(e);
+        onlinedInfo.skip += needSkip;
+        fs.writeFileSync(path.join(__dirname, './onlined.json'), JSON.stringify(onlinedInfo));
     }
 }
 
