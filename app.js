@@ -119,7 +119,6 @@ async function start() {
             wxMOpData.product_base.detail.push({
                 "text": `顶级分类信息：${cidInfo.top.cid} -- ${cidInfo.top.cid}`
             })
-            /*
             wxMOpData.sku_list = [];
             wxMOpData.sku_list.push({
                 sku_id: ``,
@@ -129,8 +128,6 @@ async function start() {
                 ori_price: ms[i].market_price,
                 quantity: 0
             })
-            */
-
             wxMOpData.delivery_info = {
                 "delivery_type": 0,
                 "template_id": 0,
