@@ -45,6 +45,7 @@ if (process.argv.length > 2) {
             try {
                 let mList = await platformW.mList(process.argv[3]);
                 console.log(mList.products_info);
+                console.log(`已在线商品数量${mList.length}`);
             } catch (e) {
                 console.error(e);
             }
