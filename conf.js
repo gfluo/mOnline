@@ -1,3 +1,3 @@
 module.exports = {
-    sourceLimit: 1,
+    sourceLimit: 6,
 }
