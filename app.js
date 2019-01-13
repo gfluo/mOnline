@@ -46,7 +46,7 @@ if (process.argv.length > 2) {
         (async() => {
             try {
                 let mList = await platformW.mList(process.argv[3]);
-                console.log(JSON.stringify(mList.products_info[14]));
+                console.log(JSON.stringify(mList.products_info[mList.length - 1]));
                 console.log(`已在线商品数量${mList.products_info.length}`);
             } catch (e) {
                 console.error(e);
