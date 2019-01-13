@@ -81,6 +81,7 @@ class Main {
             let uploadSuccess = JSON.parse(result);
             return uploadSuccess.url;
         } catch (e) {
+            console.error(`图片上传失败`);
             throw e;
         }
     }
