@@ -101,7 +101,7 @@ async function start() {
             let relate = JSON.parse(relateStr);
             let wxCidInfo = relate[cidInfo.top.cid];
             let wxSubInfo = await platformW.getCategorySub(wxCidInfo.wx_cid);
-            ///console.log(wxSubInfo);
+            console.log(wxSubInfo);
             wxMOpData.product_base.property = [{id: `关键词`, vid: `${ms[i].keywords}`}]
             wxMOpData.product_base.category_id = [];
             wxMOpData.product_base.category_id.push(wxSubInfo.id);
