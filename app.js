@@ -68,7 +68,7 @@ async function start() {
         for (let i = 0; i < ms.length; ++i) {
             let wxMOpData = {
                 product_base: {
-                    "buy_limit": ms[i].limit_buy_num
+                    ///"buy_limit": 10000
                 }
             }
             let localFiledir = await platformS.imgDownload({
@@ -102,6 +102,7 @@ async function start() {
             let wxCidInfo = relate[cidInfo.top.cid];
             let wxSubInfo = await platformW.getCategorySub(wxCidInfo.wx_cid);
             ///console.log(wxSubInfo);
+            wxMOpData.product_base.property = [{id: `关键词`, vid: `${ms[i].keywords}`}]
             wxMOpData.product_base.category_id = [];
             wxMOpData.product_base.category_id.push(wxSubInfo.id);
             wxMOpData.product_base.name = ms[i].goods_name;
@@ -128,11 +129,11 @@ async function start() {
             wxMOpData.sku_list = [];
             wxMOpData.sku_list.push({
                 sku_id: ``,
-                price: ms[i].shop_price,
+                price: ms[i].shop_price * 100 * 2.5,
                 icon_url: `${img}`,
                 product_code: `${ms[i].goods_number}`,
-                ori_price: ms[i].market_price,
-                quantity: 0
+                ori_price: ms[i].market_price * 100 * 2.5,
+                quantity: 10000
             })
             wxMOpData.delivery_info = {
                 "delivery_type": 0,
