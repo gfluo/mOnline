@@ -68,7 +68,7 @@ async function start() {
         for (let i = 0; i < ms.length; ++i) {
             let wxMOpData = {
                 product_base: {
-                    ///"buy_limit": 10000
+                    "buy_limit": 10000
                 }
             }
             let localFiledir = await platformS.imgDownload({
