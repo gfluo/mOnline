@@ -27,7 +27,8 @@ if (process.argv.length > 2) {
     } else if (process.argv[2] == 2) {
         (async() => {
             try {
-                let skuInfo = await platformW.skuTable(`538116792`);
+                let skuInfo = await platformW.skuTable(process.argv[3]);
+                console.log(JSON.stringify(skuInfo));
             } catch (e) {
                 console.error(e);
             }
